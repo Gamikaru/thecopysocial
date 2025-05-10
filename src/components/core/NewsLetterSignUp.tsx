@@ -6,6 +6,7 @@ import React, { useState } from 'react';
 import { newsletterContent } from '@/content/config/newsletter';
 // Correct import for Icon
 import Icon from '@/components/core/Icon';
+import { Button } from '@/components/common/Buttons';
 
 interface NewsletterSignupProps {
   className?: string;
@@ -64,8 +65,10 @@ const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
           />
         </div>
 
-        <button
+        <Button
           type="submit"
+          variant="primary"
+          size="md"
           className={`${variant === 'compact' ? 'w-auto' : 'w-full'} px-4 py-3 bg-brand-primary text-text-on-accent rounded hover:opacity-90 transition-opacity duration-300 flex items-center justify-center`}
           disabled={status === 'submitting' || status === 'success'}
         >
@@ -80,7 +83,7 @@ const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
               <Icon name="fi:FiArrowRight" className="ml-2" size={16} />
             </>
           )}
-        </button>
+        </Button>
       </form>
 
       {status === 'success' && (

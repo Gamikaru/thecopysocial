@@ -1,10 +1,6 @@
 // src/app/services/page.tsx
 "use client";
 
-// src/app/services/page.tsx - CORRECTED IMPORTS
-
-"use client";
-
 import React from "react";
 import { motion } from "framer-motion";
 // Fix path - should be common/Dividers not sections/Dividers
@@ -29,20 +25,29 @@ export default function ServicesPage() {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
     >
-      {/* Editorial typographic background element */}
-      <div className="fixed top-0 left-0 w-full h-screen pointer-events-none overflow-hidden -z-20">
-        <div className="absolute top-[5%] right-[-5%] text-[40vw] leading-none font-bold tracking-tighter text-[var(--color-accent-clay)]/[0.03]">
-          COPY
-        </div>
-      </div>
-
       {/* Editorial page marker */}
       <div className="fixed bottom-6 right-6 text-[var(--color-text-tertiary)] uppercase tracking-widest text-xs hidden md:block pointer-events-none">
         Services
       </div>
 
-      {/* Hero Section */}
-      <ServicesHero />
+      {/* Hero Section with Editorial Design */}
+      <section className="py-32 relative">
+        {/* Editorial grid overlay */}
+        <div className="absolute inset-0 grid grid-cols-12 pointer-events-none">
+          {[...Array(12)].map((_, i) => (
+            <div key={i} className="border-l border-[var(--color-text-primary)]/5 h-full" />
+          ))}
+        </div>
+
+        {/* Oversized typography background element */}
+        <div className="absolute -top-20 -left-20 text-[40vw] leading-none font-bold tracking-tighter text-[var(--color-accent-clay)]/[0.03] pointer-events-none z-0">
+          COPY
+        </div>
+
+        <div className="container mx-auto px-6 relative z-10">
+          <ServicesHero />
+        </div>
+      </section>
 
       {/* Editorial Divider */}
       <EditorialSectionBreak

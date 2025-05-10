@@ -2,11 +2,11 @@
 "use client";
 
 import React from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { heroSection } from '../../../../content/data/home';
+import { heroSection } from '@/content/data/home';
 import Icon from '@/components/core/Icon';
+import { EditorialButton } from '@/components/common/Buttons';
 
 const Hero: React.FC = () => {
   return (
@@ -81,20 +81,35 @@ const Hero: React.FC = () => {
                 transition={{ duration: 0.8, delay: 1 }}
                 className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6"
               >
-                <Link
+                {/* Primary CTA Button: black fill, white text */}
+                <EditorialButton
                   href={heroSection.cta.link}
-                  className="px-8 py-4 bg-[var(--color-accent-navy)] text-[var(--color-text-on-accent)] uppercase tracking-widest text-sm font-light hover:bg-[var(--color-accent-navy-dark)] transition-colors"
+                  variant="accent"
+                  color="light"
+                  size="lg"
+                  className="w-full sm:w-auto"
+                  forceBackgroundColor="!bg-black"
+                  forceTextColor="!text-white"
+                  uppercase
                 >
                   {heroSection.cta.text}
-                </Link>
+                </EditorialButton>
 
-                <Link
+                {/* Secondary Portfolio Button: no fill, black text */}
+                <EditorialButton
                   href="/portfolio"
-                  className="px-8 py-4 border border-[var(--color-text-primary)] uppercase tracking-widest text-sm font-light hover:bg-[var(--color-text-primary)] hover:text-[var(--color-bg-primary)] transition-colors flex items-center group"
+                  variant="bordered"
+                  color="primary"
+                  size="lg"
+                  icon="fi:FiArrowRight"
+                  iconPosition="right"
+                  className="w-full sm:w-auto"
+                  forceBackgroundColor="!bg-transparent"
+                  forceTextColor="!text-black"
+                  uppercase
                 >
-                  <span>Portfolio</span>
-                  <span className="ml-3 h-px w-6 bg-[var(--color-text-primary)] group-hover:bg-[var(--color-bg-primary)] transition-colors"></span>
-                </Link>
+                  Portfolio
+                </EditorialButton>
               </motion.div>
             </div>
           </div>

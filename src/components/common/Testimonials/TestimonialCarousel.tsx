@@ -4,6 +4,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { TestimonialItem } from '@/content/types/types';
+import { IconButton } from '@/components/common/Buttons';
 
 interface TestimonialCarouselProps {
   testimonials: TestimonialItem[];
@@ -183,22 +184,22 @@ const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({
 
               {/* Navigation buttons */}
               <div className="flex space-x-4">
-                <button
+                <IconButton
+                  icon="fi:FiChevronLeft"
+                  variant="outline"
+                  shape="square"
+                  ariaLabel="Previous testimonial"
                   onClick={prevTestimonial}
-                  className="w-12 h-12 border border-[var(--color-text-primary)] flex items-center justify-center hover:bg-[var(--color-accent-navy)] hover:border-[var(--color-accent-navy)] hover:text-[var(--color-text-on-accent)] transition-colors"
-                  aria-label="Previous testimonial"
-                >
-                  <span className="sr-only">Previous</span>
-                  ←
-                </button>
-                <button
+                  disabled={isAnimating}
+                />
+                <IconButton
+                  icon="fi:FiChevronRight"
+                  variant="outline"
+                  shape="square"
+                  ariaLabel="Next testimonial"
                   onClick={nextTestimonial}
-                  className="w-12 h-12 border border-[var(--color-text-primary)] flex items-center justify-center hover:bg-[var(--color-accent-navy)] hover:border-[var(--color-accent-navy)] hover:text-[var(--color-text-on-accent)] transition-colors"
-                  aria-label="Next testimonial"
-                >
-                  <span className="sr-only">Next</span>
-                  →
-                </button>
+                  disabled={isAnimating}
+                />
               </div>
             </div>
           </div>

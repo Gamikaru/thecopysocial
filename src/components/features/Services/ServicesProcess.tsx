@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import { EditorialButton } from "@/components/common/Buttons";
 
 const ServicesProcess: React.FC = () => (
   <section className="py-24 bg-[var(--color-bg-primary)] relative">
@@ -134,9 +135,19 @@ const ServicesProcess: React.FC = () => (
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.6 }}
         >
-          <div className="flex items-center text-[var(--color-text-tertiary)]">
-            <div className="h-px w-12 bg-[var(--color-text-tertiary)] mr-4"></div>
-            <span className="uppercase tracking-[0.2em] text-xs">003</span>
+          <div className="flex flex-col items-center text-[var(--color-text-tertiary)]">
+            <div className="flex items-center mb-4">
+              <div className="h-px w-12 bg-[var(--color-text-tertiary)] mr-4"></div>
+              <span className="uppercase tracking-[0.2em] text-xs">003</span>
+            </div>
+            <EditorialButton
+              variant="minimal"
+              size="md"
+              href="/services"
+              className="mt-2"
+            >
+              Learn More About My Services
+            </EditorialButton>
           </div>
         </motion.div>
       </div>

@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Icon from './Icon';
 import { Heading, Text } from './Typography';
+import { Button } from '../common/Buttons';
 
 // Form field types
 type FieldType = 'text' | 'email' | 'select' | 'textarea';
@@ -380,8 +381,10 @@ const ContactForm: React.FC<ContactFormProps> = ({
           transition={{ duration: 0.6, delay: 0.8 }}
           className="pt-4"
         >
-          <button
+          <Button
             type="submit"
+            variant="primary"
+            size="md"
             disabled={status === 'submitting'}
             className="
               inline-flex items-center border border-[var(--color-text-primary)] px-8 py-4
@@ -406,7 +409,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
                 />
               </>
             )}
-          </button>
+          </Button>
         </motion.div>
       </form>
     </div>

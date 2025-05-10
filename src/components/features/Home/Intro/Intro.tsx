@@ -122,8 +122,11 @@ const Intro: React.FC<IntroProps> = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              {/* Oversized quote mark */}
-              <div className="absolute -top-16 -left-6 text-[8rem] leading-none font-serif text-[var(--color-text-primary)]/10">
+              {/* Oversized quote marks */}
+              <div className="absolute -top-16 -left-6 text-[8rem] leading-none font-serif text-[var(--color-text-primary)]/10 select-none pointer-events-none">
+                &quot;
+              </div>
+              <div className="absolute -top-16 -right-6 text-[8rem] leading-none font-serif text-[var(--color-text-primary)]/10 select-none pointer-events-none transform rotate-180">
                 &quot;
               </div>
 

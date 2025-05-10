@@ -99,6 +99,38 @@
   --gradient-clay: linear-gradient(135deg, var(--color-accent-clay-light), var(--color-accent-clay));
   --gradient-navy: linear-gradient(135deg, var(--color-accent-navy-light), var(--color-accent-navy));
 
+  /*-----------------------------------------------------------------------------
+   * BUTTON-SPECIFIC COLORS
+   * Clear distinction between filled and non-filled button styles
+   *----------------------------------------------------------------------------*/
+
+  /* Filled Buttons */
+  --color-button-filled-text: #FFFFFF;                 /* Text on filled buttons - always white */
+  --color-button-filled-primary: var(--color-accent-navy);      /* Primary filled button background */
+  --color-button-filled-primary-hover: var(--color-accent-navy-dark);  /* Primary filled button hover */
+  --color-button-filled-secondary: var(--color-accent-mauve);   /* Secondary filled button background */
+  --color-button-filled-secondary-hover: var(--color-accent-mauve-dark);  /* Secondary filled button hover */
+  --color-button-filled-accent: var(--color-accent-clay);       /* Accent filled button background */
+  --color-button-filled-accent-hover: var(--color-accent-clay-dark);  /* Accent filled button hover */
+
+  /* Non-Filled Buttons (Outlined/Ghost) */
+  --color-button-outline-text: var(--color-text-primary);       /* Text on outline buttons - dark */
+  --color-button-outline-border: var(--color-text-primary);     /* Border for outline buttons */
+  --color-button-outline-primary-text: var(--color-accent-navy);  /* Primary outline button text */
+  --color-button-outline-primary-border: var(--color-accent-navy);  /* Primary outline button border */
+  --color-button-outline-secondary-text: var(--color-accent-mauve);  /* Secondary outline button text */
+  --color-button-outline-secondary-border: var(--color-accent-mauve);  /* Secondary outline button border */
+
+  /* Ghost Buttons */
+  --color-button-ghost-text: var(--color-text-primary);         /* Ghost button text - dark */
+  --color-button-ghost-hover-bg: rgba(0, 0, 0, 0.05);          /* Ghost button hover background */
+
+  /* Disabled Buttons */
+  --color-button-disabled-filled-bg: #CCCCCC;         /* Disabled filled button background */
+  --color-button-disabled-filled-text: #666666;       /* Disabled filled button text */
+  --color-button-disabled-outline-text: #999999;      /* Disabled outline button text */
+  --color-button-disabled-outline-border: #CCCCCC;    /* Disabled outline button border */
+
   /*=============================================================================
    * TYPOGRAPHY SYSTEM
    *============================================================================*/
@@ -268,6 +300,34 @@
   --color-ui-success: #6DD58C;        /* Brighter success */
   --color-ui-info: #72A1D8;           /* Brighter info */
 
+  /* Button Colors - Dark Mode */
+  /* Filled Buttons */
+  --color-button-filled-text: #FFFFFF;                 /* Text still white on filled buttons */
+  --color-button-filled-primary: var(--color-accent-navy);
+  --color-button-filled-primary-hover: var(--color-accent-navy-light);
+  --color-button-filled-secondary: var(--color-accent-mauve);
+  --color-button-filled-secondary-hover: var(--color-accent-mauve-light);
+  --color-button-filled-accent: var(--color-accent-clay);
+  --color-button-filled-accent-hover: var(--color-accent-clay-light);
+
+  /* Non-Filled Buttons */
+  --color-button-outline-text: var(--color-text-primary);       /* Light text in dark mode */
+  --color-button-outline-border: var(--color-text-primary);
+  --color-button-outline-primary-text: var(--color-accent-navy-light);
+  --color-button-outline-primary-border: var(--color-accent-navy-light);
+  --color-button-outline-secondary-text: var(--color-accent-mauve-light);
+  --color-button-outline-secondary-border: var(--color-accent-mauve-light);
+
+  /* Ghost Buttons */
+  --color-button-ghost-text: var(--color-text-primary);
+  --color-button-ghost-hover-bg: rgba(255, 255, 255, 0.1);      /* Lighter hover in dark mode */
+
+  /* Disabled Buttons */
+  --color-button-disabled-filled-bg: #333333;
+  --color-button-disabled-filled-text: #777777;
+  --color-button-disabled-outline-text: #666666;
+  --color-button-disabled-outline-border: #444444;
+
   /* Shadows - Darker and more pronounced for dark mode */
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
@@ -341,11 +401,11 @@
  */
 
 /*
- * GENERAL UI ELEMENTS
- * - Primary Buttons: var(--color-accent-navy) background
- * - Secondary Buttons: Black border with black text on white
- * - Links: var(--color-accent-navy) for text links
- * - Hover States: var(--color-accent-navy-dark) for darker hover
- * - Section Markers: var(--color-accent-mauve) for section numbers
- * - Horizontal Lines: Black at 10-20% opacity for dividers
+ * BUTTON STYLING GUIDANCE
+ * - Primary Filled: Background var(--color-button-filled-primary), text var(--color-button-filled-text)
+ * - Secondary Filled: Background var(--color-button-filled-secondary), text var(--color-button-filled-text)
+ * - Accent Filled: Background var(--color-button-filled-accent), text var(--color-button-filled-text)
+ * - Primary Outline: Border & text var(--color-button-outline-primary-text)
+ * - Secondary Outline: Border & text var(--color-button-outline-secondary-text)
+ * - Ghost Buttons: Text var(--color-button-ghost-text), no border, transparent background
  */

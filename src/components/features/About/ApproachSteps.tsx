@@ -1,9 +1,9 @@
-// src/components/sections/About/ApproachSteps.tsx
+// src/components/features/About/ApproachSteps.tsx
 "use client";
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Heading, Text } from "../../../components/core/Typography";
+import { Heading, Text } from '@/components/core/Typography';
 import Image from "next/image";
 
 interface ApproachStep {
@@ -45,15 +45,9 @@ const ApproachSteps: React.FC<ApproachStepsProps> = ({
   ];
 
   return (
-    <section
-      className={`py-32 relative ${className}`}
-      style={{ background: "var(--color-bg-secondary)" }}
-    >
+    <section className={`py-32 relative bg-[var(--color-bg-secondary)] ${className}`}>
       {/* Editorial typographic background element */}
-      <div
-        className="absolute top-0 right-0 text-[30vw] leading-none font-bold tracking-tighter pointer-events-none select-none"
-        style={{ color: "var(--color-text-primary)", opacity: 0.03 }}
-      >
+      <div className="absolute top-0 right-0 text-[30vw] leading-none font-bold tracking-tighter pointer-events-none select-none text-[var(--color-text-primary)]/[0.03]">
         APPROACH
       </div>
 
@@ -67,22 +61,16 @@ const ApproachSteps: React.FC<ApproachStepsProps> = ({
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <div
-                className="uppercase tracking-[0.25em] text-xs font-light mb-3"
-                style={{ color: "var(--color-text-tertiary)" }}
-              >
+              <div className="uppercase tracking-[0.25em] text-xs font-light mb-3 text-[var(--color-text-tertiary)]">
                 Philosophy
               </div>
               <Heading
                 level={2}
-                className="text-4xl md:text-5xl font-bold tracking-tight mb-4 text-[color:var(--color-text-primary)]"
+                className="text-4xl md:text-5xl font-bold tracking-tight mb-4 text-[var(--color-text-primary)]"
               >
                 {title}
               </Heading>
-              <div
-                className="h-px w-16"
-                style={{ background: "var(--color-accent-mauve)" }}
-              ></div>
+              <div className="h-px w-16 bg-[var(--color-accent-mauve)]"></div>
             </motion.div>
           </div>
 
@@ -95,28 +83,22 @@ const ApproachSteps: React.FC<ApproachStepsProps> = ({
             >
               <Text
                 size="lg"
-                className="font-light leading-relaxed mb-8 text-[color:var(--color-text-secondary)]"
+                className="font-light leading-relaxed mb-8 text-[var(--color-text-secondary)]"
               >
                 {subtitle}
               </Text>
 
               {/* Pull quote - editorial feature */}
-              <div
-                className="border-l-2 pl-6 py-2 my-12"
-                style={{ borderColor: "var(--color-accent-clay-20)" }}
-              >
+              <div className="border-l-2 border-[var(--color-accent-clay-20)] pl-6 py-2 my-12">
                 <Text
                   size="xl"
                   italic
                   serif
-                  className="leading-relaxed text-[color:var(--color-text-primary)]"
+                  className="leading-relaxed text-[var(--color-text-primary)]"
                 >
                   &quot;Whatever it is, the way you tell your story online can make all the difference.&quot;
                 </Text>
-                <div
-                  className="mt-4 uppercase tracking-widest text-xs font-medium"
-                  style={{ color: "var(--color-accent-mauve)" }}
-                >
+                <div className="mt-4 uppercase tracking-widest text-xs font-medium text-[var(--color-accent-mauve)]">
                   Ashley Rudolph
                 </div>
               </div>
@@ -136,10 +118,7 @@ const ApproachSteps: React.FC<ApproachStepsProps> = ({
                   viewport={{ once: true }}
                   transition={{ duration: 0.8 }}
                 >
-                  <span
-                    className="inline-block text-[20vw] font-bold leading-none tracking-tighter"
-                    style={{ color: "var(--color-accent-clay-10)" }}
-                  >
+                  <span className="inline-block text-[20vw] font-bold leading-none tracking-tighter text-[var(--color-accent-clay-10)]">
                     {index + 1}
                   </span>
                 </motion.div>
@@ -156,20 +135,18 @@ const ApproachSteps: React.FC<ApproachStepsProps> = ({
                   >
                     <Heading
                       level={3}
-                      className="text-3xl md:text-4xl font-bold tracking-tight mb-8 text-[color:var(--color-text-primary)]"
+                      className="text-3xl md:text-4xl font-bold tracking-tight mb-8 text-[var(--color-text-primary)]"
                     >
                       {step.title}
                     </Heading>
 
-                    <Text
-                      className="font-light leading-relaxed mb-12 text-[color:var(--color-text-secondary)]"
-                    >
+                    <Text className="font-light leading-relaxed mb-12 text-[var(--color-text-secondary)]">
                       {step.content}
                     </Text>
 
                     {/* Key points with minimal design */}
                     <div className="space-y-6">
-                      {expandedContent[index].keyPoints.map((point, idx) => (
+                      {expandedContent[index]?.keyPoints.map((point, idx) => (
                         <motion.div
                           key={idx}
                           initial={{ opacity: 0, x: -10 }}
@@ -179,14 +156,11 @@ const ApproachSteps: React.FC<ApproachStepsProps> = ({
                           className="flex items-start"
                         >
                           <div className="mr-4 pt-1">
-                            <div
-                              className="w-4 h-px"
-                              style={{ background: "var(--color-accent-mauve)" }}
-                            ></div>
+                            <div className="w-4 h-px bg-[var(--color-accent-mauve)]"></div>
                           </div>
                           <Text
                             weight="medium"
-                            className="mb-0 text-[color:var(--color-text-primary)]"
+                            className="mb-0 text-[var(--color-text-primary)]"
                           >
                             {point}
                           </Text>
@@ -206,19 +180,12 @@ const ApproachSteps: React.FC<ApproachStepsProps> = ({
                     className="relative"
                   >
                     {/* Sharp geometric frame - sage accent */}
-                    <div
-                      className="absolute inset-0 border"
-                      style={{
-                        borderColor: "var(--color-accent-sage)",
-                        transform: "translateX(1.5rem) translateY(1.5rem)",
-                        zIndex: 0,
-                      }}
-                    ></div>
+                    <div className="absolute inset-0 border border-[var(--color-accent-sage)] translate-x-6 translate-y-6 z-0"></div>
 
                     {/* High-contrast image */}
                     <div className="relative aspect-[5/6] overflow-hidden bg-gray-100">
                       <Image
-                        src={expandedContent[index].image}
+                        src={expandedContent[index]?.image}
                         alt={`Illustration for ${step.title}`}
                         fill
                         className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
@@ -226,7 +193,7 @@ const ApproachSteps: React.FC<ApproachStepsProps> = ({
                       />
 
                       {/* Overlay with split design - editorial feature */}
-                      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-30"></div>
+                      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/30"></div>
 
                       {/* Editorial caption overlay */}
                       <div className="absolute bottom-0 left-0 right-0 p-6">
@@ -234,7 +201,7 @@ const ApproachSteps: React.FC<ApproachStepsProps> = ({
                           <div className="uppercase tracking-widest text-xs text-white font-medium">
                             Step {index + 1}
                           </div>
-                          <div className="h-px w-16 bg-white opacity-70"></div>
+                          <div className="h-px w-16 bg-white/70"></div>
                         </div>
                       </div>
                     </div>

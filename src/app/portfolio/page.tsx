@@ -18,13 +18,6 @@ export default function PortfolioPage() {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
     >
-      {/* Editorial typographic background element */}
-      <div className="fixed top-0 left-0 w-full h-screen pointer-events-none overflow-hidden -z-20">
-        <div className="absolute top-[5%] right-[-5%] text-[40vw] leading-none font-bold tracking-tighter text-[var(--color-accent-sage)]/[0.03]">
-          WORK
-        </div>
-      </div>
-
       {/* Editorial page marker */}
       <div className="fixed bottom-6 right-6 text-[var(--color-text-tertiary)] uppercase tracking-widest text-xs hidden md:block pointer-events-none">
         Portfolio
@@ -37,6 +30,11 @@ export default function PortfolioPage() {
           {[...Array(12)].map((_, i) => (
             <div key={i} className="border-l border-[var(--color-text-primary)]/5 h-full" />
           ))}
+        </div>
+
+        {/* Oversized typography background element */}
+        <div className="absolute -top-20 -left-20 text-[40vw] leading-none font-bold tracking-tighter text-[var(--color-accent-sage)]/[0.03] pointer-events-none z-0">
+          WORK
         </div>
 
         <div className="container mx-auto px-6">

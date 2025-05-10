@@ -8,6 +8,7 @@ import { Heading, Text } from "@/components/core/Typography";
 import Icon from "@/components/core/Icon";
 import Link from "next/link";
 import Image from "next/image";
+import { ButtonGroup, Button } from '@/components/common/Buttons';
 
 interface BlogGridProps {
   posts: BlogPost[];
@@ -120,28 +121,25 @@ const BlogGrid: React.FC<BlogGridProps> = ({
           {showFilters && allCategories.length > 1 && (
             <div className="mt-12">
               <div className="overflow-x-auto pb-4">
-                <div className="flex space-x-2 min-w-max">
-                  {allCategories.map((category, index) => (
-                    <motion.button
+                <ButtonGroup spacing="sm">
+                  {allCategories.map((category) => (
+                    <Button
                       key={category}
-                      onClick={() => setActiveFilter(category)}
-                      initial={{ opacity: 0, y: 10 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.4, delay: 0.1 + (index * 0.05) }}
+                      variant="outline"
+                      size="sm"
                       className={`
                         px-6 py-3 text-xs uppercase tracking-widest transition-colors duration-300
-                        ${
-                          activeFilter === category
-                            ? "bg-[var(--color-text-primary)] text-[var(--color-bg-primary)]"
-                            : "border border-[var(--color-text-primary)]/20 hover:border-[var(--color-accent-mauve)]"
+                        ${activeFilter === category
+                          ? "bg-[var(--color-text-primary)] text-[var(--color-bg-primary)]"
+                          : "border border-[var(--color-text-primary)]/20 hover:border-[var(--color-accent-mauve)]"
                         }
                       `}
+                      onClick={() => setActiveFilter(category)}
                     >
                       {category}
-                    </motion.button>
+                    </Button>
                   ))}
-                </div>
+                </ButtonGroup>
               </div>
             </div>
           )}

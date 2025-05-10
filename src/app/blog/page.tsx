@@ -26,9 +26,14 @@ export default function BlogPage() {
         </div>
 
         {/* Oversized typography background element */}
-        <div className="absolute -top-20 -left-20 text-[30vw] leading-none font-bold tracking-tighter text-[var(--color-text-primary)]/[0.03] pointer-events-none z-0">
+        <motion.div
+          initial={{ opacity: 1 }}
+          animate={{ opacity: 0 }}
+          transition={{ delay: 1, duration: 0.8 }}
+          className="absolute -top-20 -left-20 text-[30vw] leading-none font-bold tracking-tighter text-[var(--color-text-primary)]/[0.03] pointer-events-none z-0"
+        >
           BLOG
-        </div>
+        </motion.div>
 
         <div className="container mx-auto px-6 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
