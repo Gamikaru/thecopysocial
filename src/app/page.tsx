@@ -1,103 +1,184 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import React from 'react';
+import { motion } from 'framer-motion';
+import { ctaSection } from '../content/data/home';
+import Link from 'next/link';
+
+// Import updated editorial components
+import Hero from '../components/features/Home/Hero/Hero';
+import EditorialSectionBreak from '../components/common/Dividers/EditorialSectionBreak';
+import Intro from '../components/features/Home/Intro/Intro';
+import ServicesPreview from '../components/features/Home/ServicesPreview/ServicesPreview';
+import ProcessSection from '../components/features/Home/Process/ProcessSection';
+import TestimonialCarousel from '../components/common/Testimonials/TestimonialCarousel';
+import BlogPreview from '../components/features/Home/BlogPreview/BlogPreview';
+import { testimonials as homeTestimonials } from '../content/data/home';
+
+export default function HomePage() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <motion.div
+      className="relative bg-white"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
+    >
+      {/* Editorial typographic background element */}
+      <div className="fixed top-0 left-0 w-full h-screen pointer-events-none overflow-hidden -z-20">
+        <div className="absolute top-[5%] right-[-5%] text-[40vw] leading-none font-bold tracking-tighter text-black/[0.01]">
+          TCS
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </div>
+
+      {/* Editorial page marker */}
+      <div className="fixed bottom-6 right-6 text-black/40 uppercase tracking-widest text-xs hidden md:block pointer-events-none">
+        The Copy Social
+      </div>
+
+      {/* Hero Section */}
+      <Hero />
+
+      {/* Editorial Divider - Introduction */}
+      <EditorialSectionBreak
+        sectionNumber="002"
+        sectionTitle="Introduction"
+        alignment="center"
+      />
+
+      {/* Intro Section */}
+      <Intro />
+
+      {/* Editorial Divider - Services */}
+      <EditorialSectionBreak
+        sectionNumber="003"
+        sectionTitle="Services"
+        alignment="right"
+      />
+
+      {/* Services Preview Section */}
+      <ServicesPreview />
+
+      {/* Editorial Divider - Process */}
+      <EditorialSectionBreak
+        sectionNumber="004"
+        sectionTitle="Process"
+        alignment="left"
+      />
+
+      {/* Process Section */}
+      <ProcessSection />
+
+      {/* Editorial Divider - Testimonials */}
+      <EditorialSectionBreak
+        sectionNumber="005"
+        sectionTitle="Testimonials"
+        alignment="center"
+      />
+
+      {/* Testimonials Section */}
+      <TestimonialCarousel
+        testimonials={homeTestimonials}
+        title="What My Clients Say"
+        subtitle="Don't just take my word for it. Here's what clients have to say about working with me."
+      />
+
+      {/* Editorial Divider - Journal */}
+      <EditorialSectionBreak
+        sectionNumber="006"
+        sectionTitle="Journal"
+        alignment="right"
+      />
+
+      {/* Blog Preview Section */}
+      <BlogPreview />
+
+      {/* Final CTA Section - Editorial Style */}
+      <section className="py-32 bg-black text-white relative">
+        {/* Editorial grid overlay */}
+        <div className="absolute inset-0 grid grid-cols-12 pointer-events-none">
+          {[...Array(12)].map((_, i) => (
+            <div key={i} className="border-l border-white/5 h-full" />
+          ))}
+        </div>
+
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+            <motion.div
+              className="md:col-span-7 md:col-start-3"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              {/* Editorial section marker */}
+              <div className="flex items-center mb-16">
+                <div className="h-px w-16 bg-white/30 mr-4"></div>
+                <span className="uppercase tracking-[0.3em] text-xs text-white/70">Next Steps</span>
+              </div>
+
+              {/* CTA Title with dramatic typography */}
+              <motion.h2
+                className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-8"
+                initial={{ y: 50, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                {ctaSection.title}
+              </motion.h2>
+
+              <motion.p
+                className="text-xl font-light leading-relaxed mb-12 text-white/80"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+              >
+                {ctaSection.description}
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+              >
+                <Link
+                  href={ctaSection.buttonLink}
+                  className="inline-flex items-center border border-white px-8 py-4 uppercase tracking-widest text-sm font-light hover:bg-white hover:text-black transition-colors group"
+                >
+                  <span>{ctaSection.buttonText}</span>
+                  <motion.span
+                    className="ml-6 h-px bg-white group-hover:bg-black transition-colors"
+                    initial={{ width: 24 }}
+                    whileInView={{ width: 48 }}
+                    viewport={{ once: true }}
+                  />
+                </Link>
+              </motion.div>
+            </motion.div>
+          </div>
+
+          {/* Editorial signature */}
+          <motion.div
+            className="mt-24 flex justify-center"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+          >
+            <div className="text-center">
+              <div className="uppercase tracking-[0.5em] text-xs text-white/50 mb-4">
+                The Copy Social
+              </div>
+              <div className="font-serif italic text-2xl">Ashley</div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Editorial end mark */}
+      <div className="h-px w-full bg-black"></div>
+    </motion.div>
   );
 }
