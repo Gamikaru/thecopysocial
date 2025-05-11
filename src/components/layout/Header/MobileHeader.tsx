@@ -7,6 +7,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { mainNavItems, ctaButton, brandInfo } from "@/content/config/navigation";
 import Icon from "@/components/core/Icon";
+import ThemeToggle from '@/components/common/ThemeToggle';
 
 const MobileHeader: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -59,49 +60,59 @@ const MobileHeader: React.FC = () => {
   return (
     <header className="md:hidden flex flex-col">
       {/* Top bar - refined with editorial styling */}
-      <div className="flex justify-between items-center py-4 px-6 border-b border-black/10">
+      <div className="flex flex-row justify-between items-center py-6 px-6 border-b border-[var(--color-text-primary)]/10">
         <Link href="/" aria-label={`${brandInfo.name} - Home`}>
-          <div className="relative h-16 w-[240px]">
+          {/* 2.5x larger logo */}
+          <div className="relative h-28 w-[300px] shrink-0">
             <Image
               src="/images/copy_social_logo.png"
               alt={brandInfo.name}
               fill
               priority
               className="object-contain"
-              sizes="240px"
+              sizes="300px"
             />
           </div>
         </Link>
 
-        {/* Minimal geometric menu button */}
-        <button
-          onClick={toggleMenu}
-          className="flex items-center justify-center w-12 h-12 border border-black relative z-20 transition-colors duration-300"
-          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-        >
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={isMenuOpen ? 'close' : 'menu'}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
-            >
-              {isMenuOpen ? (
-                <Icon name="fi:FiX" size={24} />
-              ) : (
-                <Icon name="fi:FiMenu" size={24} />
-              )}
-            </motion.div>
-          </AnimatePresence>
-        </button>
+        {/* Controls container */}
+        <div className="flex items-center space-x-4">
+          {/* Theme Toggle - Editorial styling */}
+          <ThemeToggle
+            size="sm"
+            className="border border-[var(--color-text-primary)]/20 hover:border-[var(--color-accent-mauve)]"
+          />
+
+          {/* Minimal geometric menu button */}
+          <button
+            onClick={toggleMenu}
+            className="flex items-center justify-center w-14 h-14 border border-[var(--color-text-primary)] relative z-20 transition-colors duration-300 hover:bg-[var(--color-text-primary)] hover:text-[var(--color-bg-primary)]"
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+          >
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={isMenuOpen ? 'close' : 'menu'}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+              >
+                {isMenuOpen ? (
+                  <Icon name="fi:FiX" size={24} />
+                ) : (
+                  <Icon name="fi:FiMenu" size={24} />
+                )}
+              </motion.div>
+            </AnimatePresence>
+          </button>
+        </div>
       </div>
 
       {/* Editorial mobile menu overlay */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
-            className="fixed inset-0 bg-white z-10 flex flex-col"
+            className="fixed inset-0 bg-[var(--color-bg-primary)] z-10 flex flex-col"
             variants={menuVariants}
             initial="closed"
             animate="open"
@@ -110,20 +121,20 @@ const MobileHeader: React.FC = () => {
             {/* Editorial grid overlay */}
             <div className="absolute inset-0 grid grid-cols-6 pointer-events-none">
               {[...Array(6)].map((_, i: number) => (
-                <div key={i} className="border-l border-black/5 h-full" />
+                <div key={i} className="border-l border-[var(--color-text-primary)]/5 h-full" />
               ))}
             </div>
 
             {/* Background typography element */}
-            <div className="absolute top-0 right-0 text-[25vw] leading-none font-bold tracking-tighter text-black/[0.03] pointer-events-none z-0">
+            <div className="absolute top-0 right-0 text-[25vw] leading-none font-bold tracking-tighter text-[var(--color-text-primary)]/[0.03] pointer-events-none z-0">
               MENU
             </div>
 
             {/* Editorial section header */}
-            <div className="px-6 pt-24 pb-8">
+            <div className="px-6 pt-28 pb-8">
               <div className="flex items-center mb-6">
-                <div className="h-px w-12 bg-[var(--color-accent-mauve)] mr-4"></div>
-                <span className="uppercase tracking-[0.3em] text-xs text-black/70">Navigation</span>
+                <div className="h-px w-16 bg-[var(--color-accent-mauve)] mr-4"></div>
+                <span className="uppercase tracking-[0.3em] text-xs text-[var(--color-text-primary)]/70">Navigation</span>
               </div>
             </div>
 
@@ -133,7 +144,7 @@ const MobileHeader: React.FC = () => {
                   key={item.path}
                   custom={i}
                   variants={itemVariants}
-                  className="w-full py-5 border-t border-black/10 last:border-b"
+                  className="w-full py-5 border-t border-[var(--color-text-primary)]/10 last:border-b"
                 >
                   <div className="flex items-center justify-between">
                     {/* Page number - editorial detail */}
@@ -148,7 +159,7 @@ const MobileHeader: React.FC = () => {
                     >
                       {item.label}
                       <motion.span
-                        className="ml-3 h-px bg-black group-hover:w-6 transition-all duration-300"
+                        className="ml-3 h-px bg-[var(--color-text-primary)] group-hover:w-8 transition-all duration-300"
                         initial={{ width: 0 }}
                         animate={{ width: 12 }}
                       />
@@ -157,15 +168,39 @@ const MobileHeader: React.FC = () => {
                 </motion.div>
               ))}
 
+              {/* Theme Toggle Section */}
+              <motion.div
+                custom={mainNavItems.length + 0.5}
+                variants={itemVariants}
+                className="w-full py-5 border-t border-[var(--color-text-primary)]/10"
+              >
+                <div className="flex items-center justify-between">
+                  <span className="text-[var(--color-accent-mauve)] text-sm font-light">
+                    {/* Theme toggle numerical marker */}
+                    {(mainNavItems.length + 1).toString().padStart(2, '0')}
+                  </span>
+
+                  <div className="flex items-center">
+                    <span className="text-xl font-medium tracking-tight mr-4">
+                      Theme
+                    </span>
+                    <ThemeToggle
+                      size="md"
+                      className="border border-[var(--color-text-primary)]/20 hover:border-[var(--color-accent-mauve)]"
+                    />
+                  </div>
+                </div>
+              </motion.div>
+
               {/* CTA Button with editorial styling */}
               <motion.div
-                custom={mainNavItems.length}
+                custom={mainNavItems.length + 1}
                 variants={itemVariants}
                 className="mt-12 w-full"
               >
                 <Link
                   href={ctaButton.path}
-                  className="block w-full py-4 px-6 bg-black text-white uppercase tracking-widest text-sm font-light hover:bg-[var(--color-accent-navy)] transition-colors duration-300"
+                  className="block w-full py-4 px-6 bg-[var(--color-button-filled-primary)] text-[var(--color-button-filled-text)] uppercase tracking-widest text-sm font-light hover:bg-[var(--color-button-filled-primary-hover)] transition-colors duration-300"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {ctaButton.label}
@@ -176,11 +211,11 @@ const MobileHeader: React.FC = () => {
             {/* Editorial footer marker */}
             <motion.div
               variants={itemVariants}
-              custom={mainNavItems.length + 1}
+              custom={mainNavItems.length + 2}
               className="mt-auto mb-8 px-6 py-4"
             >
-              <div className="flex items-center text-black/40">
-                <div className="h-px w-12 bg-black/20 mr-4"></div>
+              <div className="flex items-center text-[var(--color-text-primary)]/40">
+                <div className="h-px w-12 bg-[var(--color-text-primary)]/20 mr-4"></div>
                 <span className="uppercase tracking-[0.2em] text-xs">
                   The Copy Social
                 </span>

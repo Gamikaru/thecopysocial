@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import PortfolioGrid from '@/components/features/Portfolio/PortfolioGrid';
-import TestimonialCarousel from '@/components/common/Testimonials/TestimonialCarousel';
+import TestimonialCarousel from '@/components/common/Testimonials/TestimonialsCarousel';
 import { portfolioProjects, portfolioHero, portfolioCta, testimonials as portfolioTestimonials } from '@/content/data/portfolio';
 import EditorialSectionBreak from '@/components/common/Dividers/EditorialSectionBreak';
 

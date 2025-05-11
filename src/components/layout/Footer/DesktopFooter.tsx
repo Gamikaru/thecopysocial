@@ -29,7 +29,7 @@ const DesktopFooter: React.FC = () => {
   };
 
   return (
-    <footer className="bg-[var(--color-bg-primary)] pt-24 pb-12 border-t border-[var(--color-text-primary)]/10 hidden md:block relative">
+    <footer className="bg-[var(--color-bg-primary)] pt-32 pb-16 border-t border-[var(--color-text-primary)]/10 hidden md:block relative">
       {/* Editorial grid overlay */}
       <div className="absolute inset-0 grid grid-cols-12 pointer-events-none">
         {[...Array(12)].map((_, i) => (
@@ -38,52 +38,52 @@ const DesktopFooter: React.FC = () => {
       </div>
 
       {/* Editorial background typography element */}
-      <div className="absolute bottom-0 right-0 text-[25vw] leading-none font-bold tracking-tighter text-[var(--color-text-primary)]/[0.02] pointer-events-none z-0">
+      <div className="absolute bottom-0 right-0 text-[30vw] leading-none font-bold tracking-tighter text-[var(--color-text-primary)]/[0.02] pointer-events-none z-0">
         TCS
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-12 gap-8 mb-16">
-          {/* Logo and brand information */}
-          <div className="col-span-3 col-start-1">
+        <div className="grid grid-cols-12 gap-8 mb-20">
+          {/* Logo and brand information - 2.5x larger logo */}
+          <div className="col-span-4 col-start-1">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <Link href="/" className="inline-block mb-6">
-                <div className="relative h-16 w-48">
+              <Link href="/" className="inline-block mb-8">
+                <div className="relative h-32 w-[320px]">
                   <Image
                     src="/images/copy_social_logo.png"
                     alt={brandInfo.name}
                     fill
                     className="object-contain"
-                    sizes="(max-width: 768px) 100vw, 200px"
+                    sizes="(max-width: 768px) 100vw, 320px"
                   />
                 </div>
               </Link>
 
-              <p className="text-[var(--color-text-secondary)] text-sm mb-6 font-light leading-relaxed">
+              <p className="text-[var(--color-text-secondary)] text-lg mb-8 font-light leading-relaxed max-w-md">
                 {brandInfo.tagline}
               </p>
 
               {/* Editorial design element */}
-              <div className="h-px w-16 bg-[var(--color-text-primary)]/20 mb-4"></div>
+              <div className="h-px w-24 bg-[var(--color-text-primary)]/20 mb-6"></div>
             </motion.div>
           </div>
 
           {/* Navigation */}
-          <div className="col-span-2 col-start-5">
+          <div className="col-span-3 col-start-6">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <div className="uppercase tracking-[0.2em] text-xs text-[var(--color-text-tertiary)] mb-6">Navigation</div>
+              <div className="uppercase tracking-[0.2em] text-sm text-[var(--color-text-tertiary)] mb-8 border-b border-[var(--color-text-primary)]/10 pb-3">Navigation</div>
 
-              <nav className="space-y-4">
+              <nav className="space-y-5">
                 {footerLinks.map(
                   (
                     link: { path: string; label: string },
@@ -98,13 +98,13 @@ const DesktopFooter: React.FC = () => {
                     >
                       <Link
                         href={link.path}
-                        className="text-[var(--color-text-primary)] hover:text-[var(--color-accent-mauve)] transition-colors duration-300 group flex items-center"
+                        className="text-[var(--color-text-primary)] hover:text-[var(--color-accent-mauve)] transition-colors duration-300 group flex items-center text-base"
                       >
-                        <span className="text-sm">{link.label}</span>
+                        <span>{link.label}</span>
                         <motion.span
-                          className="ml-2 h-px bg-[var(--color-accent-mauve)] opacity-0 group-hover:opacity-100 transition-all duration-300"
+                          className="ml-3 h-px bg-[var(--color-accent-mauve)] opacity-0 group-hover:opacity-100 transition-all duration-300"
                           initial={{ width: 0 }}
-                          whileInView={{ width: 12 }}
+                          whileInView={{ width: 16 }}
                           viewport={{ once: true }}
                         />
                       </Link>
@@ -116,22 +116,23 @@ const DesktopFooter: React.FC = () => {
           </div>
 
           {/* Newsletter and Social */}
-          <div className="col-span-5 col-start-8">
+          <div className="col-span-5 col-start-9">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
+              className="bg-[var(--color-bg-secondary)] p-8 border-l-2 border-[var(--color-accent-mauve)]"
             >
-              <div className="uppercase tracking-[0.2em] text-xs text-[var(--color-text-tertiary)] mb-6">Stay Connected</div>
+              <div className="uppercase tracking-[0.2em] text-sm text-[var(--color-text-tertiary)] mb-6 border-b border-[var(--color-text-primary)]/10 pb-3">Stay Connected</div>
 
               <div className="mb-8">
-                <h3 className="text-xl font-medium mb-2">{newsletterContent.title}</h3>
-                <p className="text-[var(--color-text-secondary)] text-sm mb-4">
+                <h3 className="text-2xl font-medium mb-4">{newsletterContent.title}</h3>
+                <p className="text-[var(--color-text-secondary)] text-base mb-6">
                   {newsletterContent.description.slice(0, 120)}...
                 </p>
 
-                <form onSubmit={handleSubmit} className="flex">
+                <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
                   <input
                     type="email"
                     value={email}
@@ -142,7 +143,7 @@ const DesktopFooter: React.FC = () => {
                   />
                   <button
                     type="submit"
-                    className="px-6 py-3 bg-[var(--color-text-primary)] text-[var(--color-bg-primary)] hover:bg-[var(--color-accent-navy)] transition-colors duration-300"
+                    className="px-6 py-3 bg-[var(--color-button-filled-primary)] text-[var(--color-button-filled-text)] hover:bg-[var(--color-button-filled-primary-hover)] transition-colors duration-300"
                   >
                     {newsletterContent.buttonText}
                   </button>
@@ -151,8 +152,8 @@ const DesktopFooter: React.FC = () => {
 
               {/* Social Icons with editorial styling */}
               <div>
-                <div className="uppercase tracking-[0.2em] text-xs text-[var(--color-text-tertiary)] mb-4">Follow</div>
-                <div className="flex space-x-6 items-center">
+                <div className="uppercase tracking-[0.2em] text-sm text-[var(--color-text-tertiary)] mb-6 pb-2 border-b border-[var(--color-text-primary)]/10">Follow</div>
+                <div className="flex space-x-8 items-center">
                   {socialLinks.map(
                     (
                       link: { platform: string; url: string; ariaLabel: string },
@@ -172,16 +173,16 @@ const DesktopFooter: React.FC = () => {
                           whileInView={{ opacity: 1, y: 0 }}
                           viewport={{ once: true }}
                           transition={{ duration: 0.4, delay: 0.4 + (index * 0.1) }}
-                          className="text-[var(--color-text-primary)] hover:text-[var(--color-accent-mauve)] transition-colors duration-300"
+                          className="text-[var(--color-text-primary)] hover:text-[var(--color-accent-mauve)] transition-colors duration-300 p-3 border border-transparent hover:border-[var(--color-accent-mauve-20)]"
                         >
-                          <Icon name={iconName} size={20} />
+                          <Icon name={iconName} size={24} />
                         </motion.a>
                       );
                     }
                   )}
 
                   {/* Editorial design element */}
-                  <div className="h-px w-12 bg-[var(--color-text-primary)]/20"></div>
+                  <div className="h-px w-12 bg-[var(--color-text-primary)]/20 ml-auto"></div>
                 </div>
               </div>
             </motion.div>
@@ -190,7 +191,7 @@ const DesktopFooter: React.FC = () => {
 
         {/* Editorial bottom divider */}
         <motion.div
-          className="h-px w-full bg-[var(--color-text-primary)]/10 mb-8"
+          className="h-px w-full bg-[var(--color-text-primary)]/10 mb-10"
           initial={{ width: 0 }}
           whileInView={{ width: "100%" }}
           viewport={{ once: true }}
@@ -198,7 +199,7 @@ const DesktopFooter: React.FC = () => {
         />
 
         {/* Copyright with editorial treatment */}
-        <div className="flex justify-between items-center text-[var(--color-text-tertiary)] text-xs">
+        <div className="flex justify-between items-center text-[var(--color-text-tertiary)] text-sm">
           <div>{brandInfo.copyright}</div>
           <div className="flex items-center">
             <div className="h-[3px] w-[3px] bg-[var(--color-text-tertiary)] mr-3"></div>
