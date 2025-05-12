@@ -1,12 +1,10 @@
-// src/components/sections/Testimonials/TestimonialCarousel.tsx
 "use client";
 
-import React, { useState } from "react";
+import React, { useState} from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { TestimonialItem } from '@/content/types/types';
-import { IconButton } from '@/components/common/Buttons';
 
-interface TestimonialCarouselProps {
+interface DesktopTestimonialCarouselProps {
   testimonials: TestimonialItem[];
   title?: string;
   subtitle?: string;
@@ -14,7 +12,7 @@ interface TestimonialCarouselProps {
   interval?: number;
 }
 
-const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({
+const DesktopTestimonialCarousel: React.FC<DesktopTestimonialCarouselProps> = ({
   testimonials,
   title = "What My Clients Say",
   subtitle = "Don't just take my word for it. Here's what clients have to say about working with me.",
@@ -184,22 +182,22 @@ const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({
 
               {/* Navigation buttons */}
               <div className="flex space-x-4">
-                <IconButton
-                  icon="fi:FiChevronLeft"
-                  variant="outline"
-                  shape="square"
-                  ariaLabel="Previous testimonial"
+                <button
                   onClick={prevTestimonial}
-                  disabled={isAnimating}
-                />
-                <IconButton
-                  icon="fi:FiChevronRight"
-                  variant="outline"
-                  shape="square"
-                  ariaLabel="Next testimonial"
+                  className="w-12 h-12 border border-[var(--color-text-primary)] flex items-center justify-center hover:bg-[var(--color-accent-navy)] hover:border-[var(--color-accent-navy)] hover:text-[var(--color-text-on-accent)] transition-colors"
+                  aria-label="Previous testimonial"
+                >
+                  <span className="sr-only">Previous</span>
+                  ←
+                </button>
+                <button
                   onClick={nextTestimonial}
-                  disabled={isAnimating}
-                />
+                  className="w-12 h-12 border border-[var(--color-text-primary)] flex items-center justify-center hover:bg-[var(--color-accent-navy)] hover:border-[var(--color-accent-navy)] hover:text-[var(--color-text-on-accent)] transition-colors"
+                  aria-label="Next testimonial"
+                >
+                  <span className="sr-only">Next</span>
+                  →
+                </button>
               </div>
             </div>
           </div>
@@ -223,4 +221,4 @@ const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({
   );
 };
 
-export default TestimonialCarousel;
+export default DesktopTestimonialCarousel;

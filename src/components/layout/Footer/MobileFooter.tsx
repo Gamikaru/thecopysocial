@@ -29,59 +29,59 @@ const MobileFooter: React.FC = () => {
   };
 
   return (
-    <footer className="bg-[var(--color-bg-primary)] pt-16 pb-12 border-t border-[var(--color-text-primary)]/10 md:hidden relative">
+    <footer className="bg-[var(--color-bg-primary)] pt-20 pb-16 border-t border-[var(--color-text-primary)]/10 md:hidden relative">
       {/* Editorial background element */}
-      <div className="absolute bottom-0 right-0 text-[20vw] leading-none font-bold tracking-tighter text-[var(--color-text-primary)]/[0.02] pointer-events-none z-0">
+      <div className="absolute bottom-0 right-0 text-[25vw] leading-none font-bold tracking-tighter text-[var(--color-text-primary)]/[0.03] pointer-events-none z-0">
         TCS
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
-        {/* Logo and brand */}
+        {/* Logo and brand - 2.5x larger logo */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-12 text-center"
+          className="mb-16 text-center"
         >
-          <Link href="/" className="inline-block mb-4">
-            <div className="relative h-16 w-48 mx-auto">
+          <Link href="/" className="inline-block mb-6">
+            <div className="relative h-32 w-[280px] mx-auto">
               <Image
                 src="/images/copy_social_logo.png"
                 alt={brandInfo.name}
                 fill
                 className="object-contain"
-                sizes="(max-width: 768px) 200px, 100px"
+                sizes="(max-width: 768px) 280px, 200px"
               />
             </div>
           </Link>
 
-          <p className="text-[var(--color-text-secondary)] text-sm mb-4 max-w-xs mx-auto">
+          <p className="text-[var(--color-text-secondary)] text-base mb-6 max-w-xs mx-auto leading-relaxed">
             {brandInfo.tagline}
           </p>
 
           {/* Editorial design element */}
-          <div className="h-px w-16 bg-[var(--color-text-primary)]/20 mx-auto"></div>
+          <div className="h-px w-20 bg-[var(--color-text-primary)]/20 mx-auto"></div>
         </motion.div>
 
-        {/* Newsletter Section */}
+        {/* Newsletter Section - Styled as a card */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="mb-12"
+          className="mb-16 bg-[var(--color-bg-secondary)] p-6 border-t-2 border-[var(--color-accent-mauve)]"
         >
-          <div className="uppercase tracking-[0.2em] text-xs text-[var(--color-text-tertiary)] mb-4 text-center">Stay Connected</div>
+          <div className="uppercase tracking-[0.2em] text-sm text-[var(--color-text-tertiary)] mb-4 text-center border-b border-[var(--color-text-primary)]/10 pb-2">Stay Connected</div>
 
           <div className="mb-6 text-center">
-            <h3 className="text-xl font-medium mb-2">{newsletterContent.title}</h3>
-            <p className="text-[var(--color-text-secondary)] text-sm mb-4">
-              {newsletterContent.description.slice(0, 80)}...
+            <h3 className="text-xl font-medium mb-3">{newsletterContent.title}</h3>
+            <p className="text-[var(--color-text-secondary)] text-sm mb-6">
+              {newsletterContent.description.slice(0, 100)}...
             </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="flex flex-col space-y-3">
+          <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
             <input
               type="email"
               value={email}
@@ -92,9 +92,10 @@ const MobileFooter: React.FC = () => {
             />
             <button
               type="submit"
-              className="px-6 py-3 bg-[var(--color-text-primary)] text-[var(--color-bg-primary)] hover:bg-[var(--color-accent-navy)] transition-colors duration-300"
+              className="px-6 py-3 bg-[var(--color-button-filled-primary)] text-[var(--color-button-filled-text)] hover:bg-[var(--color-button-filled-primary-hover)] transition-colors duration-300 flex items-center justify-center"
             >
-              {newsletterContent.buttonText}
+              <span>{newsletterContent.buttonText}</span>
+              <Icon name="fi:FiArrowRight" size={16} className="ml-2" />
             </button>
           </form>
         </motion.div>
@@ -105,11 +106,11 @@ const MobileFooter: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mb-12"
+          className="mb-16"
         >
-          <div className="uppercase tracking-[0.2em] text-xs text-[var(--color-text-tertiary)] mb-4 text-center">Navigation</div>
+          <div className="uppercase tracking-[0.2em] text-sm text-[var(--color-text-tertiary)] mb-6 text-center border-b border-[var(--color-text-primary)]/10 pb-2">Navigation</div>
 
-          <nav className="grid grid-cols-2 gap-4">
+          <nav className="grid grid-cols-2 gap-6">
             {footerLinks.map(
               (
                 link: { path: string; label: string },
@@ -125,9 +126,10 @@ const MobileFooter: React.FC = () => {
                 >
                   <Link
                     href={link.path}
-                    className="text-[var(--color-text-primary)] hover:text-[var(--color-accent-mauve)] transition-colors duration-300 text-sm"
+                    className="text-[var(--color-text-primary)] hover:text-[var(--color-accent-mauve)] transition-colors duration-300 text-base inline-flex flex-col items-center"
                   >
-                    {link.label}
+                    <span>{link.label}</span>
+                    <span className="h-px w-8 bg-transparent group-hover:bg-[var(--color-accent-mauve-20)] mt-1"></span>
                   </Link>
                 </motion.div>
               )
@@ -141,9 +143,9 @@ const MobileFooter: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="mb-12"
+          className="mb-16"
         >
-          <div className="uppercase tracking-[0.2em] text-xs text-[var(--color-text-tertiary)] mb-4 text-center">Follow</div>
+          <div className="uppercase tracking-[0.2em] text-sm text-[var(--color-text-tertiary)] mb-6 text-center border-b border-[var(--color-text-primary)]/10 pb-2">Follow</div>
 
           <div className="flex justify-center space-x-8">
             {socialLinks.map(
@@ -165,9 +167,9 @@ const MobileFooter: React.FC = () => {
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.4, delay: 0.4 + (index * 0.1) }}
-                    className="text-[var(--color-text-primary)] hover:text-[var(--color-accent-mauve)] transition-colors duration-300"
+                    className="text-[var(--color-text-primary)] hover:text-[var(--color-accent-mauve)] transition-colors duration-300 p-3 border border-transparent hover:border-[var(--color-accent-mauve-20)]"
                   >
-                    <Icon name={iconName} size={24} />
+                    <Icon name={iconName} size={28} />
                   </motion.a>
                 );
               }
@@ -177,7 +179,7 @@ const MobileFooter: React.FC = () => {
 
         {/* Editorial divider */}
         <motion.div
-          className="h-px w-full bg-[var(--color-text-primary)]/10 mb-6"
+          className="h-px w-full bg-[var(--color-text-primary)]/10 mb-8"
           initial={{ width: 0 }}
           whileInView={{ width: "100%" }}
           viewport={{ once: true }}
@@ -185,8 +187,8 @@ const MobileFooter: React.FC = () => {
         />
 
         {/* Copyright with editorial treatment */}
-        <div className="text-center text-[var(--color-text-tertiary)] text-xs">
-          <div className="mb-2">{brandInfo.copyright}</div>
+        <div className="text-center text-[var(--color-text-tertiary)] text-sm">
+          <div className="mb-3">{brandInfo.copyright}</div>
           <div className="flex items-center justify-center">
             <div className="h-[3px] w-[3px] bg-[var(--color-text-tertiary)] mr-3"></div>
             <span className="uppercase tracking-[0.2em]">The Copy Social</span>

@@ -11,7 +11,7 @@ import ServicesPackages from "@/components/features/Services/ServicesPackages";
 import ServicesProcess from "@/components/features/Services/ServicesProcess";
 import ServicesFAQ from "@/components/features/Services/ServicesFAQ";
 import ServicesCTA from "@/components/features/Services/ServicesCTA";
-import TestimonialCarousel from "@/components/common/Testimonials/TestimonialCarousel";
+import TestimonialCarousel from "@/components/common/Testimonials/TestimonialsCarousel";
 // Import from the correct path
 import { testimonials as portfolioTestimonials } from "@/content/data/portfolio";
 

@@ -1,2 +1,3 @@
-export { default as TestimonialsSection } from './TestimonialsSection';
-export { default as TestimonialCarousel } from './TestimonialCarousel';
+export { default as TestimonialsCarousel } from './TestimonialsCarousel';
+// src/components/features/Testimonials/index.ts
+export { default } from './TestimonialsSection';

@@ -3,6 +3,8 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useDevice } from '@/context/DeviceContext';
+import MobileEditorialSectionBreak from './MobileEditorialSectionBreak';
 
 interface EditorialSectionBreakProps {
   sectionNumber?: string;
@@ -19,6 +21,19 @@ const EditorialSectionBreak: React.FC<EditorialSectionBreakProps> = ({
   alignment = 'center',
   showGrid = true
 }) => {
+  const { isMobile } = useDevice();
+
+  if (isMobile) {
+    return (
+      <MobileEditorialSectionBreak
+        sectionNumber={sectionNumber}
+        sectionTitle={sectionTitle}
+        alignment={alignment}
+        className={className}
+      />
+    );
+  }
+
   // Define alignment classes
   const alignmentClasses = {
     left: "justify-start text-left",
